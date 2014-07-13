@@ -1,0 +1,52 @@
+/* http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/ 
+
+html,body,.page div,.page span,.page applet,.page object,.page iframe,.page h1,.page h2,.page h3,.page h4,.page h5,.page h6,.page p,.page blockquote,.page pre,
+.page a,.page abbr,.page acronym,.page address,.page big,.page cite,.page code,.page del,.page dfn,.page em,.page font,.page img,.page ins,.page kbd,.page q,.page s,.page samp,
+.page small,.page strike,.page strong,.page sub,.page sup,.page tt,.page var,dl,.page dt,.page dd,.page ol,.page ul,.page li,.page fieldset,.page form,.page label,.page legend,
+.page table,.page caption,.page tbody,.page tfoot,.page thead,.page tr,.page th,.page td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}*/
+/* remember to define focus styles! */
+.page :focus
+{
+	outline: 0;
+}
+body
+{
+	line-height: 1;
+	color: black;
+	background: white;
+}
+.page ol, .page ul
+{
+	list-style: none;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+.page .table
+{
+	border-collapse: separate;
+	border-spacing: 0;
+}
+.page caption, 
+.page .table th, 
+.page .table td
+{
+	text-align: left;
+	font-weight: normal;
+}
+.page blockquote:before, .page blockquote:after, .page q:before, .page q:after
+{
+	content: "";
+}
+.page blockquote, .page q
+{
+	quotes: "" "";
+}

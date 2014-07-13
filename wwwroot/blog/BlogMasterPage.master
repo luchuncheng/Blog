@@ -1,0 +1,26 @@
+﻿<%@ Master Language="C#" MasterPageFile="../MasterPage.master" AutoEventWireup="true" Inherits="Home.blog_BlogMasterPage" %>
+
+<%@ Register Src="../TabItems.ascx" TagName="TabItems" TagPrefix="uc1" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="TabItems" Runat="Server">
+	<uc1:TabItems ID="TabItems1" runat="server" SelectedIndex="3" />
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Content" Runat="Server">
+	<asp:ContentPlaceHolder ID="BlogContent" runat="server">
+	</asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="SideMenu" Runat="Server">
+<div class="sidemenu">	
+	<h3>最新文章</h3>
+	<ul>			
+	<%= RenderLeatestAtricles() %>	
+	</ul>	
+	<h3>最新评论</h3>
+	<ul>			
+	<%= RenderLeatestComments()%>	
+	</ul>	
+</div>
+</asp:Content>
+

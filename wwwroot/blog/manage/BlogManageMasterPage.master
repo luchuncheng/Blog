@@ -1,0 +1,24 @@
+﻿<%@ Master Language="C#" MasterPageFile="../../MasterPage.master" AutoEventWireup="true" Inherits="Home.blog_manage_BlogManageMasterPage" %>
+
+<%@ Register Src="../../TabItems.ascx" TagName="TabItems" TagPrefix="uc1" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="TabItems" Runat="Server">
+	<uc1:TabItems ID="TabItems1" runat="server" SelectedIndex="7" />
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Content" Runat="Server">
+	<asp:ContentPlaceHolder ID="BlogContent" runat="server">
+	</asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="SideMenu" Runat="Server">
+<div class="sidemenu">	
+	<h3>博客管理</h3>
+	<ul>				
+		<li><a href="/blog/manage/edit.aspx" title="发表文章">发表文章</a></li>
+		<li><a href="/blog/manage/articles.aspx" title="文章管理">文章管理</a></li>
+		<li><a href="/blog/manage/logout.aspx" title="退出登录">退出登录</a></li>
+	</ul>	
+</div>
+</asp:Content>
+

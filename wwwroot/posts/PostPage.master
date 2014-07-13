@@ -1,0 +1,21 @@
+﻿<%@ Master Language="C#" MasterPageFile="../MasterPage.master" AutoEventWireup="true" Inherits="Home.posts_PostPage" %>
+
+<%@ Register Src="../TabItems.ascx" TagName="TabItems" TagPrefix="uc1" %>
+
+<%@ Register src="../IntroduceItems.ascx" tagname="IntroduceItems" tagprefix="uc2" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Header" runat="Server">
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="TabItems" runat="Server">
+	<uc1:TabItems ID="TabItems1" runat="server" SelectedIndex="2" />
+</asp:Content>
+
+<asp:Content ID="Content4" ContentPlaceHolderID="SideMenu" runat="Server">
+	<uc2:IntroduceItems ID="IntroduceItems1" runat="server" />
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="Server">
+	<asp:ContentPlaceHolder ID="PostContent" runat="server">
+	</asp:ContentPlaceHolder>
+</asp:Content>

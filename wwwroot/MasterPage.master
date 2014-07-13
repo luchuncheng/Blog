@@ -1,0 +1,262 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Home.MasterPage" %>
+
+<%@ Register src="CommandCtrl.ascx" tagname="CommandCtrl" tagprefix="uc1" %>
+
+<%@ Register src="Demo.ascx" tagname="Demo" tagprefix="uc3" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+<title>云骞 - 开源WebIM</title>
+
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="keywords" content="云骞,专业,网站,在线,客服,系统,Lesktop,WebIM,聊天室,无刷新,聊天,网页聊天" />
+
+<link rel="stylesheet" type="text/css" media="screen" href="<%= LUCC.Global.BaseUrl %>/css/screen.css" />
+
+<script language="JavaScript" type="text/javascript">
+runtimeVersion = "2.0.0";
+checkClient = false;
+directLink = "<%= EIM_CC.IMServiceUrl %>/startup.application?chatwith=4&embedcode=1&createaccount=true";
+setupLink = "<%= EIM_CC.IMServiceUrl %>/client.ashx?chatwith=4&embedcode=1&createaccount=true";
+
+function InitializeAppLink()
+{
+}
+function HasRuntimeVersion(v, c)
+{
+	var va = GetVersion(v);
+	var i;
+	var a = navigator.userAgent.match(/\.NET CLR [0-9.]+/g);
+	if (va[0] == 4)
+		a = navigator.userAgent.match(/\.NET[0-9.]+E/g);
+	if (c)
+	{
+		a = navigator.userAgent.match(/\.NET Client [0-9.]+/g);
+		if (va[0] == 4)
+			a = navigator.userAgent.match(/\.NET[0-9.]+C/g);
+	}
+	if (a != null)
+		for (i = 0; i < a.length; ++i)
+		if (CompareVersions(va, GetVersion(a[i])) <= 0)
+		return true;
+	return false;
+}
+function GetVersion(v)
+{
+	var a = v.match(/([0-9]+)\.([0-9]+)\.([0-9]+)/i);
+	if (a == null)
+		a = v.match(/([0-9]+)\.([0-9]+)/i);
+	return a.slice(1);
+}
+function CompareVersions(v1, v2)
+{
+	if (v1.length > v2.length)
+	{
+		v2[v2.length] = 0;
+	}
+	else if (v1.length < v2.length)
+	{
+		v1[v1.length] = 0;
+	}
+
+	for (i = 0; i < v1.length; ++i)
+	{
+		var n1 = new Number(v1[i]);
+		var n2 = new Number(v2[i]);
+		if (n1 < n2)
+			return -1;
+		if (n1 > n2)
+			return 1;
+	}
+	return 0;
+}
+</script>
+
+<script language="javascript" type="text/javascript">
+	window.onload=function()
+	{
+	    var sidemenu_demo = document.getElementById("sidemenu_demo");
+	    if (sidemenu_demo != null && sidemenu_demo != undefined) sidemenu_demo.style.display = "block";
+		
+		if(GetState().Action == "Error")
+		{
+			alert(GetState().Exception.Message);
+		}
+		else if(GetState().Action == "Alert")
+		{
+			alert(GetState().Message);
+		}
+		
+		if(GetState().ScrollTop != undefined)
+		{
+			if(Core.GetBrowser()=="IE") document.documentElement.scrollTop = GetState().ScrollTop;
+			else document.body.scrollTop = GetState().ScrollTop;
+		}
+	}
+</script>
+
+<asp:ContentPlaceHolder id="Header" runat="server">
+</asp:ContentPlaceHolder>
+
+</head>
+
+<body>
+    <form id="form1" runat="server">
+    <div class="page">
+<!-- wrap starts here -->
+<div id="wrap">
+
+	<!--header -->
+	<div id="header">
+		<div id="logo">
+			<img alt="云骞" src="<%= LUCC.Global.BaseUrl %>/images/logo.png" />
+		</div>	
+		<p id="slogan"style="width:200px; text-align:right; font-family:Arial;">开源即时通讯软件</p>	
+		
+		<div  id="nav">
+			<ul>
+				<asp:ContentPlaceHolder id="TabItems" runat="server">
+				</asp:ContentPlaceHolder>
+			</ul>		
+		</div>	
+		
+		<div id="header-image"></div>
+						
+	<!--header ends-->					
+	</div>
+	
+	<!-- content -->
+	<div id="content-outer" class="clear"><div id="content-wrap">
+	
+		<div id="content">
+		
+			<div id="left">	
+                <div class="ad" style="border: solid 1px #ECD6C4; background-color:#FFFCF8;color:#AA0000; padding:6px; letter-spacing: 2px;">
+                <a href="http://eim.cc#trial">云骞免费即时通讯软件(企业内部IM及在线客服)，欢迎试用</a>
+                </div>
+                <br />
+                <asp:ContentPlaceHolder id="Content" runat="server">
+                </asp:ContentPlaceHolder>
+			</div>
+		
+			<div id="right">
+							
+				<div class="sidemenu">
+					<h3>意见反馈</h3>
+					<ul>
+						<li id='li_startchat' style='display:none;'><a id='a_startchat' href="javascript:StartChat('lucc')"></a></li>
+						<%--<li><a href="http://s.eim.cc?join=lesktop" target="_blank">Lesktop交流群<br /><span>在线实时交流</span></a></li>--%>
+						<li><a href="mailto:mrlucc@126.com">发送邮件<br /><span>期待您的意见和建议</span></a></li>
+					</ul>
+				</div>
+				
+				<uc3:Demo ID="Demo1" runat="server" />
+
+				<asp:ContentPlaceHolder id="SideMenu" runat="server">
+					
+				</asp:ContentPlaceHolder>
+							
+				<div class="sidemenu">
+					<h3>友情链接</h3>
+					<ul>
+						<li><a target="_blank" href="http://fm.163.com" title="网易闪电邮">网易闪电邮<br /><span>收发邮件快如闪电</span></a></li>
+					    <li><a target="_blank" href="http://hifood.taobao.com" title="程序员的零食库">忠记食品<br /><span>程序员的零食库</span></a></li>
+						<li><a target="_blank" href="http://xiangwangfeng.com" title="阿毛的蛋疼地">阿毛的蛋疼地<br />
+							<span>毛曰: 蛋疼的人生才是完美的</span></a>
+                        </li>
+						<li><a target="_blank" href="http://www.imoldman.com" title="又傻又贱的老汉">又傻又贱的老汉</a>
+                        </li>
+						<li><a target="_blank" href="http://albin216.blog.163.com/" title="业精于专，成于广">业精于专，成于广</a>
+                        </li>
+					</ul>
+				</div>		
+				
+			</div>		
+		
+		</div>	
+			
+	<!-- content end -->	
+	</div></div>
+	
+	<!-- footer-bottom starts -->		
+	<div id="footer-bottom">
+		<div class="bottom-left">
+			<p>&nbsp;Copyright ?2010 云骞软件, All Rights Reserved&nbsp; 粤ICP备13059318号&nbsp; &nbsp;
+			<a target="_blank" href="http://www.bluewebtemplates.com/" title="Website Templates">website templates</a> by <a target="_blank" href="http://www.styleshout.com/">styleshout</a>
+			</p>
+		</div>
+	<!-- 
+		<div class="bottom-right">
+			<p>		
+				<a target="_blank" href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | 
+		   	<a href="http://validator.w3.org/check/referer">XHTML</a>	|			
+				<a target="_blank" href="index.html">Home</a> |
+				<a target="_blank" href="index.html">Sitemap</a> |
+				<a target="_blank" href="index.html">RSS Feed</a>								
+			</p>
+		</div>
+	footer-bottom ends -->		
+	</div>
+</div>
+<!-- wrap ends here -->
+    </div>
+    <uc1:CommandCtrl ID="CommandCtrl" runat="server" />
+</form>
+
+</body>	
+
+<script language="javascript" type="text/javascript">
+    document.writeln('<script src="<%= EIM_CC.IMServiceUrl %>/EmbedCS.ashx?ID=3&' + (new Date()).getTime() + '" language="javascript" type="text/javascript"></' + 'script>');
+</script>
+<script language="javascript" type="text/javascript">
+    window.__embed_cs_init = function()
+    {
+		var support_clickonce = HasRuntimeVersion(runtimeVersion, false) || (checkClient && HasRuntimeVersion(runtimeVersion, checkClient));
+        document.getElementById("li_startchat").style.display = '';
+        var html = "";
+        if (__embed_config.Users["LUCC"].IsOnline) 
+        {
+			html = "<a href='javascript:StartChat(\"lucc\")'>在线咨询</a><span id='__im_online' style='color:red;'>[在线]</span><br/><span>在线实时交流</span>";
+			html +=" ，您可以使用<a href='javascript:StartChat(\"lucc\")' style='font-weight: normal; margin: 0px 3px;'>Web版</a>或<a id='client_link' style='font-weight: normal; margin: 0px 3px;' title='支持截图等功能'>客户端</a>"
+		}
+        else 
+        {
+			html = "<a href='javascript:StartChat(\"lucc\")'>在线咨询</a><span id='__im_offline' style='color:#999999;'>[离线]</span><br/><span>欢迎留下您的意见和建议</span>";
+		}
+    	document.getElementById("li_startchat").innerHTML = html;
+    	if(document.getElementById("client_link") != undefined)
+    	{
+    		document.getElementById("client_link").href = support_clickonce ? directLink : setupLink;
+    	}
+	}
+</script>
+<!--
+<script language="javascript" type="text/javascript">
+    document.writeln('<script type="text/javascript" src="/Lesktop/embed.js.aspx?'+(new Date()).getTime()+'"><'+'/script>');
+</script>
+-->
+<script language="javascript" type="text/javascript">
+if(window.Core == undefined)
+{
+	document.writeln('<script type="text/javascript" src="<%= LUCC.Global.BaseUrl %>/js/Common.js"><'+'/script>');
+}
+</script>
+
+<!--script language="javascript" type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19660725-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script-->
+</html>
