@@ -16,7 +16,7 @@
 
 <p>1、云骞开源IM的服务端实际上就是一个ASP.NET网站，因此不需要使用独立服务器，<font color="#ff0000">仅需要一个支持.NET2.0的Web空间即可将IM部署到互联网上。</font></p>
  
-<p><strong>源代码下载请参考：</strong><a href="http://luchuncheng.com/blog/article.aspx?ID=12" target="_blank">http://luchuncheng.com/blog/article.aspx?ID=12</a>。</p>
+<p><strong>源代码下载：</strong><a href="http://luchuncheng.com/blog/article.aspx?ID=12" target="_blank">http://luchuncheng.com/blog/article.aspx?ID=12</a>。</p>
 
 <p>2、可以同时以客户端模式和Web模式运行，两者拥有完全一样的操作界面。</p>
 
