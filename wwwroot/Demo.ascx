@@ -19,6 +19,6 @@ function Lesktop_StartChat(name)
 	<h3 style="font-family:Arial;">在线演示</h3>
 	<ul>				
 		<li><a href="http://s.eim.cc" target="_blank" title="Web模式演示">Web模式演示</a></li>
-		<li><a href="http://s.eim.cc/2.0.0.12/Client.zip" title="桌面版下载">桌面版下载</a></li>
+		<li><a href="http://s.eim.cc/2.0.0.15/Client.zip" title="桌面版下载">桌面版下载</a></li>
 	</ul>	
 </div>
