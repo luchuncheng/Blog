@@ -8,4 +8,6 @@
 <asp:PlaceHolder ID="PlaceHolder1" runat="server">
 <li id="<%= SelectedIndex == 7 ? "current" : "" %>""><a href="<%= AppPath %>/blog/manage/articles.aspx">博客管理</a></li>
 </asp:PlaceHolder>
+<!--
 <li id="<%= SelectedIndex == 5 ? "current" : "" %>"><a href="<%= AppPath %>/about.aspx">联系方式</a></li>
+-->
