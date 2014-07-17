@@ -135,9 +135,11 @@ function CompareVersions(v1, v2)
 		<div id="content">
 		
 			<div id="left">	
+		<!--
                 <div class="ad" style="border: solid 1px #ECD6C4; background-color:#FFFCF8;color:#AA0000; padding:6px; letter-spacing: 2px;">
                 <a href="http://eim.cc#trial">云骞免费即时通讯软件(企业内部IM及在线客服)，欢迎试用</a>
                 </div>
+                -->
                 <br />
                 <asp:ContentPlaceHolder id="Content" runat="server">
                 </asp:ContentPlaceHolder>
