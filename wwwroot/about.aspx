@@ -31,10 +31,12 @@
 			<td class="style2">电子邮件：</td>
 			<td class="style1"><a href="mailto:mrlucc@126.com">mrlucc@126.com</a></td>
 		</tr>
+		<!--
 		<tr>
 			<td class="style2">QQ讨论群：</td>
 			<td class="style1">25160257</td>
 		</tr>
+		-->
 	</table>
 </asp:Content>
 
